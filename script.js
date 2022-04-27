@@ -6,9 +6,18 @@ const incompleteList = document.querySelector('#incomplete-items')
 
 for (let item of todoItems){
     const currentItem = document.createElement('li')
-    currentItem.innerText = item.title
+    currentItem.classList.add('list-group-item')
+    const checkbox = document.createElement('input')
+    checkbox.type = 'checkbox'
+    checkbox.classList.add('form-check-input')
+    currentItem.appendChild(checkbox)
+    const label =document.createElement('label')
+    label.innerText += item.title
+    label.classList.add('form-check-label', 'ps-3')
+    currentItem.appendChild(label)
     if (item.completed == true){
         completeList.appendChild(currentItem)
+        checkbox.checked = true
     }
     else {
         incompleteList.appendChild(currentItem)
